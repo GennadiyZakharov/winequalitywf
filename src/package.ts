@@ -24,7 +24,7 @@ export async function WineQualityWf(params: any) {
     type: 'static',
     steps: [{
       id: 'step1',
-      nqName: 'winequalitywf:MyAddScript',
+      nqName: 'winequalitywf:fetchwinedata',
     }]
   };
   return c;

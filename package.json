@@ -1,0 +1,37 @@
+{
+  "name": "winequalitywf",
+  "friendlyName": "winequalitywf",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "@datagrok-libraries/compute-api": "^0.6.3",
+    "@datagrok-libraries/utils": "^4.4.0",
+    "cash-dom": "^8.1.4",
+    "datagrok-api": "^1.21.3",
+    "dayjs": "=1.11.10"
+  },
+  "devDependencies": {
+    "datagrok-tools": "latest",
+    "ts-loader": "latest",
+    "typescript": "latest",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "link-all": "grok link",
+    "debug-winequalitywf": "webpack && grok publish",
+    "release-winequalitywf": "webpack && grok publish --release",
+    "build-winequalitywf": "webpack",
+    "build": "webpack",
+    "debug-winequalitywf-dev": "webpack && grok publish dev",
+    "release-winequalitywf-dev": "webpack && grok publish dev --release",
+    "debug-winequalitywf-local": "webpack && grok publish local",
+    "release-winequalitywf-local": "webpack && grok publish local --release"
+  },
+  "canEdit": [
+    "Developers"
+  ],
+  "canView": [
+    "All users"
+  ]
+}

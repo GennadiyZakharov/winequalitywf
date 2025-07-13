@@ -4,9 +4,6 @@ upload.keys.json
 # Dependency directories
 node_modules/
 
-# Webpack outputs
-dist/
-
 # IDEs
 # VS Code (https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore)
 .vscode/*
@@ -27,6 +24,3 @@ dist/
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/codeStyles/
-
-# Emitted *.js files
-src/**/*.js

@@ -22,18 +22,31 @@ export async function WineQualityWf(params: any) {
     nqName: 'winequalitywf:WineQualityWf',
     version: '1.0',
     type: 'static',
-    steps: [{
-      id: 'step1',
-      nqName: 'winequalitywf:fetchwinedata',
-    }]
+    steps: [
+        {
+          id: 'fetchdata',
+          friendlyName: 'Fetch data',
+          nqName: 'winequalitywf:fetchwinedata',
+        },
+        {
+          id: 'clustering',
+          friendlyName: 'Clustering',
+          nqName: 'winequalitywf:clusterwinedata',
+        }
+        ],
+  links: [
+      {
+          id: 'gatherwinedata',
+          type: 'data',
+          from: [
+              'value(optional):winequalitywf/subworkflow/fetchwinedata/df_wine',
+          ],
+          to: [
+              'value(optional):winequalitywf/subworkflow/clusterwinedata/df_wine',
+          ],
+      }
+     ]
   };
   return c;
-}
-
-//input: double a
-//input: double b
-//output: double c
-export function MyAddScript(a: number, b: number) {
-  return a + b;
 }
 

@@ -35,15 +35,15 @@ export async function WineQualityWf(params: any) {
         }
         ],
   links: [
-      {
-          id: 'gatherwinedata',
-          type: 'data',
-          from: [
-              'value(optional):winequalitywf/subworkflow/fetchwinedata/df_wine',
-          ],
-          to: [
-              'value(optional):winequalitywf/subworkflow/clusterwinedata/df_wine',
-          ],
+     {
+        id: 'gatherwinedata',
+        type: 'data',
+        from: [
+          'value_in:fetchdata/df_wine',
+        ],
+        to: [
+          'value_out:clustering/df_wine',
+        ],
       }
      ]
   };

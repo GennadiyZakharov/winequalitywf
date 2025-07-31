@@ -12,7 +12,8 @@ dayjs.extend(timezone);
 
 export const _package = new DG.Package();
 
-//tags: model
+//name: Wine quality analysis demo workflow
+//tags: model, demo
 //editor: Compute2:TreeWizardEditor
 //input: object params
 //output: object result
@@ -32,17 +33,32 @@ export async function WineQualityWf(params: any) {
           id: 'clustering',
           friendlyName: 'Clustering',
           nqName: 'winequalitywf:clusterwinedata',
+        },
+        {
+          id: 'trainregression',
+          friendlyName: 'Train Regression Model',
+          nqName: 'winequalitywf:trainregression',
         }
         ],
   links: [
-     {
-        id: 'gatherwinedata',
+      {
+        id: 'winedatatoclustering',
         type: 'data',
         from: [
           'value_in:fetchdata/df_wine',
         ],
         to: [
           'value_out:clustering/df_wine',
+        ],
+      },
+      {
+        id: 'winedatatoregression',
+        type: 'data',
+        from: [
+          'value_in:fetchdata/df_wine',
+        ],
+        to: [
+          'value_out:trainregression/df_wine',
         ],
       }
      ]

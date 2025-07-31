@@ -2,7 +2,7 @@
 #description: Cluster fetched data
 #language: python
 #input: dataframe df_wine
-#output: dataframe df_plot { viewer: scatterPlot(x:"PCA1", y:"PCA2", color:"cluster")}
+#output: dataframe df_clustering { viewer: scatterPlot(x:"PCA1", y:"PCA2", color:"cluster")}
 
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -23,7 +23,7 @@ kmeans = KMeans(n_clusters=5, random_state=42)
 clusters = kmeans.fit_predict(X_scaled).astype(str)
 
 # --- Step 4: Plotting ---
-df_plot = pd.DataFrame({
+df_clustering = pd.DataFrame({
     "PCA1": X_pca[:, 0],
     "PCA2": X_pca[:, 1],
     "cluster": clusters,

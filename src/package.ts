@@ -30,7 +30,7 @@ export async function WineQualityWf(params: any) {
           nqName: 'winequalitywf:fetchwinedata',
         },
         {
-          id: 'clustering',
+          id: 'clusterwinedata',
           friendlyName: 'Clustering',
           nqName: 'winequalitywf:clusterwinedata',
         },
@@ -38,6 +38,11 @@ export async function WineQualityWf(params: any) {
           id: 'trainregression',
           friendlyName: 'Train Regression Model',
           nqName: 'winequalitywf:trainregression',
+        },
+        {
+          id: 'mergepredictions',
+          friendlyName: 'Merge predictions of two models',
+          nqName: 'winequalitywf:mergepredictions',
         }
         ],
   links: [
@@ -48,7 +53,7 @@ export async function WineQualityWf(params: any) {
           'value_in:fetchdata/df_wine',
         ],
         to: [
-          'value_out:clustering/df_wine',
+          'value_out:clusterwinedata/df_wine',
         ],
       },
       {
@@ -59,6 +64,26 @@ export async function WineQualityWf(params: any) {
         ],
         to: [
           'value_out:trainregression/df_wine',
+        ],
+      },
+      {
+        id: 'regressindatatomerge',
+        type: 'data',
+        from: [
+          'value_in:trainregression/df_regression',
+        ],
+        to: [
+          'value_out:mergepredictions/df_regression',
+        ],
+      },
+      {
+        id: 'clusteringtomerge',
+        type: 'data',
+        from: [
+          'value_in:clusterwinedata/df_clustering',
+        ],
+        to: [
+          'value_out:mergepredictions/df_clustering',
         ],
       }
      ]

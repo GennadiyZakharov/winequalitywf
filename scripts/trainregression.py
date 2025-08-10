@@ -2,6 +2,7 @@
 #description: Train regression on wine quality data
 #language: python
 #input: dataframe df_wine
+#input: double test_size = 0.2 {caption: PCA components; min:0.1; max:0.5 }
 #output: dataframe df_regression { viewer: scatterPlot(x:"actual", y:"predicted")}
 
 import pandas as pd

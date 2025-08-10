@@ -2,6 +2,8 @@
 #description: Cluster fetched data
 #language: python
 #input: dataframe df_wine
+#input: int n_pca = 6 { caption: PCA components } [Number of PCA components to cluster]
+#input: int n_clusters = 2 {caption: Clusters} [Number of cluisters for K-means]
 #output: dataframe df_clustering { viewer: scatterPlot(x:"PCA1", y:"PCA2", color:"cluster")}
 
 import pandas as pd
@@ -15,11 +17,11 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(features)
 
 # --- Step 2: PCA for visualization ---
-pca = PCA(n_components=4)
+pca = PCA(n_components=n_pca)
 X_pca = pca.fit_transform(X_scaled)
 
 # --- Step 3: K-means clustering ---
-kmeans = KMeans(n_clusters=5, random_state=42)
+kmeans = KMeans(n_clusters=n_clusters, random_state=42)
 clusters = kmeans.fit_predict(X_scaled).astype(str)
 
 # --- Step 4: Plotting ---

@@ -6,9 +6,6 @@
 #output: dataframe df_wine
 #output: int total_lines
 
-# URLs for red and white wine datasets
-
-
 # Load datasets
 df_red = pd.read_csv(url_red, sep=';')
 df_white = pd.read_csv(url_white, sep=';')
@@ -19,5 +16,5 @@ df_white["wine_type"] = "white"
 
 # Combine both datasets
 df_wine = pd.concat([df_red, df_white], ignore_index=True)
+df_wine.reset_index(drop=True, inplace=True)
 total_lines = df_wine.shape[0]
-

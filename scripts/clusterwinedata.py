@@ -2,8 +2,8 @@
 #description: Cluster fetched data
 #language: python
 #input: dataframe df_wine
-#input: int n_pca = 6 { caption: PCA components } [Number of PCA components to cluster]
-#input: int n_clusters = 2 {caption: Clusters} [Number of cluisters for K-means]
+#input: int n_pca = 8 { caption: PCA components } [Number of PCA components to cluster]
+#input: int n_clusters = 4 {caption: Clusters} [Number of clusters for K-means]
 #output: dataframe df_clustering { viewer: scatterPlot(x:"PCA1", y:"PCA2", color:"cluster")}
 
 import pandas as pd
@@ -30,4 +30,4 @@ df_clustering = pd.DataFrame({
     "PCA2": X_pca[:, 1],
     "cluster": clusters,
     "wine_type": df_wine["wine_type"]
-})
+}, index=df_wine.index)

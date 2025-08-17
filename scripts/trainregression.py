@@ -2,7 +2,7 @@
 #description: Train regression on wine quality data
 #language: python
 #input: dataframe df_wine
-#input: double test_size = 0.2 {caption: PCA components; min:0.1; max:0.5 }
+#input: double test_size = 0.2 {caption: Fraction of test data; min:0.1; max:0.5 }
 #output: dataframe df_regression { viewer: scatterPlot(x:"actual", y:"predicted")}
 
 import pandas as pd
@@ -21,13 +21,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-# --- Predict and evaluate ---
+# --- Predict and evaluate on the test data ---
 y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
+print(f"R2 score: {r2:.2f}")
 
-# --- Make dataframe actual vs predicted ---
+# --- Make dataframe actual vs predicted for full-zise data ---
 df_regression = pd.DataFrame({
-    'actual': y_test,
-    'predicted': y_pred,
-})
+    'actual': y,
+    'predicted': model.predict(X),
+}, index=df_wine.index)
